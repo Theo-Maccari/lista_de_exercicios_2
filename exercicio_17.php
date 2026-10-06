@@ -4,7 +4,6 @@ function contarCaracteres($texto) {
     return strlen($texto);
 }
 
-// 2. Contar palavras
 function contarPalavras($texto) {
     $texto = trim($texto);
     $texto = preg_replace('/\s+/', ' ', $texto);
@@ -16,7 +15,6 @@ function contarPalavras($texto) {
     return count(explode(' ', $texto));
 }
 
-// 3. Contar frases
 function contarFrases($texto) {
     $frases = preg_split('/[.!?]+/', $texto);
     $frases = array_filter($frases);
@@ -24,7 +22,6 @@ function contarFrases($texto) {
     return count($frases);
 }
 
-// 4. Organizar as palavras
 function separarPalavras($texto) {
     $texto = strtolower($texto);
     $texto = preg_replace('/[.,!?;:]/', '', $texto);
@@ -37,7 +34,6 @@ function separarPalavras($texto) {
     return explode(' ', $texto);
 }
 
-// 5. Encontrar palavra mais longa
 function palavraMaisLonga($palavras) {
 
     $maior = '';
@@ -51,7 +47,6 @@ function palavraMaisLonga($palavras) {
     return $maior;
 }
 
-// 6. Encontrar palavra mais curta
 function palavraMaisCurta($palavras) {
 
     if (count($palavras) == 0) {
@@ -69,7 +64,6 @@ function palavraMaisCurta($palavras) {
     return $menor;
 }
 
-// 7. Contar palavras repetidas
 function contarPalavrasRepetidas($palavras) {
 
     $contagem = array_count_values($palavras);
@@ -84,7 +78,6 @@ function contarPalavrasRepetidas($palavras) {
     return $repetidas;
 }
 
-// 8. Encontrar as cinco palavras mais frequentes
 function palavrasMaisFrequentes($palavras) {
 
     $contagem = array_count_values($palavras);
@@ -94,17 +87,14 @@ function palavrasMaisFrequentes($palavras) {
     return array_slice($contagem, 0, 5, true);
 }
 
-// 9. Remover espaços duplicados
 function removerEspacosDuplicados($texto) {
     return preg_replace('/\s+/', ' ', trim($texto));
 }
 
-// 10. Formatar texto
 function formatarTexto($texto) {
     return ucwords(strtolower(removerEspacosDuplicados($texto)));
 }
 
-// Função principal
 function processarTexto($texto) {
 
     $palavras = separarPalavras($texto);
